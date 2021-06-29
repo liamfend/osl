@@ -1,5 +1,5 @@
 {
-  "name": "osl",
+  "name": "@liamfend/osl",
   "version": "1.0.0",
   "description": "osl cli quick start project",
   "main": "./bin/osl.js",
@@ -7,8 +7,7 @@
     "osl": "osl.js"
   },
   "scripts": {
-    "test1": "export INTERNAL_TEST=__test__  &&   node ./bin/osl.js start",
-    "test": "export INTERNAL_TEST=test &&   node ./src/start"
+    "test1": "export INTERNAL_TEST=__test__  &&   node ./bin/osl.js start"
   },
   "repository": {
     "type": "git",
