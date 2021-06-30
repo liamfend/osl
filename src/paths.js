@@ -16,11 +16,13 @@ const resolveModule = filePath => {
   return path.resolve(`${filePath}.js`)
 }
 
+const internalPath = process.env.INTERNAL_TEST || '' //内部开发参数,不对使用者暴露
 const appOutputBuild = path.resolve(appBase, 'build')
 const appSrcJs = resolveModule(path.resolve(appBase, 'src/index'))
 const appSrc = path.resolve(appBase, 'src')
-const appPublic = path.resolve(appBase, process.env.INTERNAL_TEST,'public')
+const appPublic = path.resolve(appBase, 'public')
 const appHtmlTemp = path.resolve(appBase, 'public/index.html')
+
 const oslConfigPath = path.resolve(appBase, '.oslrc.js')
 const appPublicPathUrl = process.env.PUBLIC_URL || '/'
 

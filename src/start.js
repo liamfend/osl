@@ -12,6 +12,7 @@ const chalk = require('chalk')
 const clear = require('console-clear')
 
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3001
+//HOST  还是暂时不支持了。
 //const HOST = process.env.HOST || '0.0.0.0'
 
 const configOptions = webpackConfig('development')
@@ -35,7 +36,8 @@ function printInstructions(appName, urls, useYarn) {
 
   if (urls.lanUrlForTerminal) {
     console.log(`  ${chalk.bold('Local:')}            ${urls.localUrlForTerminal}`)
-    console.log(`  ${chalk.bold('On Your Network:')}  ${urls.lanUrlForTerminal}`) //lanUrlForTerminal,localUrlForTerminal
+    //TODO: 等到支持选段口的时候 再输出局域网环境
+    //  console.log(`  ${chalk.bold('On Your Network:')}  ${urls.lanUrlForTerminal}`) //lanUrlForTerminal,localUrlForTerminal
   } else {
     console.log(`  ${urls.localUrlForTerminal}`)
   }
@@ -57,7 +59,6 @@ const devServerOptions = Object.assign({}, devServerConfig, {
 const server = new WebpackDevServer(compiler, devServerOptions)
 
 compiler.hooks.invalid.tap('invalid', () => {
-  
   console.log('Compiling...')
 })
 
@@ -65,7 +66,7 @@ server.listen(DEFAULT_PORT, 'localhost', err => {
   if (err) {
     return console.log(err)
   }
-  console.log(chalk.cyan('Starting the development server...\n')) 
+  console.log(chalk.cyan('Starting the development server...\n'))
 })
 let isFirstCompile = true
 compiler.hooks.done.tap('done', async stats => {
@@ -77,15 +78,11 @@ compiler.hooks.done.tap('done', async stats => {
   clear()
 
   const messages = formatWebpackMessages(statsData)
-  //   const isSuccessful = !messages.errors.length && !messages.warnings.length
-  //   //   if (isSuccessful) {
-  //   //     console.log(chalk.green('Compiled successfully!'))
-  //   //   }
   printInstructions(
     'OSL',
     {
-      lanUrlForTerminal: `http://localhost:${DEFAULT_PORT}${process.env.PUBLIC_URL||''}`,
-      localUrlForTerminal: `http://localhost:${DEFAULT_PORT}${process.env.PUBLIC_URL||''}`,
+      lanUrlForTerminal: `http://localhost:${DEFAULT_PORT}${process.env.PUBLIC_URL || ''}`,
+      localUrlForTerminal: `http://localhost:${DEFAULT_PORT}${process.env.PUBLIC_URL || ''}`,
     },
     true,
   )

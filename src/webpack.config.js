@@ -11,7 +11,7 @@ const {
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpack = require('webpack')
-const WebpackBar = require('webpackbar') 
+const WebpackBar = require('webpackbar')
 const { env } = require('./env')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -21,7 +21,7 @@ const postcssNormalize = require('postcss-normalize')
 const safePostCssParser = require('postcss-safe-parser')
 const oslConfig = require('./utils/mergeOslConfig')
 const getCSSModuleLocalIdent = require('./utils/getCSSModuleLocalIdent')
-const InterpolateHtmlPlugin = require('./utils/InterpolateHtmlPlugin');
+const InterpolateHtmlPlugin = require('./utils/InterpolateHtmlPlugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
@@ -38,6 +38,7 @@ module.exports = function (webpackEnv) {
   const isAnalyze = process.env.ANALYZE
   const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000')
 
+  console.log(appPublic, appHtmlTemp, appPublicPathUrl)
   const getStyleLoaders = (cssOptions, preProcessor) => {
     const loaders = [
       isEnvDevelopment && require.resolve('style-loader'),
@@ -95,7 +96,7 @@ module.exports = function (webpackEnv) {
     }
     return loaders
   }
-
+  console.log(appOutputBuild)
   return {
     stats: 'minimal',
     mode: webpackEnv,
@@ -253,7 +254,7 @@ module.exports = function (webpackEnv) {
     },
     plugins: [
       isEnvDevelopment && new WebpackBar(),
-      
+
       isEnvProduction && new CleanWebpackPlugin(),
       new HtmlWebpackPlugin(
         Object.assign(
@@ -299,10 +300,10 @@ module.exports = function (webpackEnv) {
       new webpack.DefinePlugin(env.stringified),
       new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
       isEnvProduction &&
-      new MiniCssExtractPlugin({
-        filename: 'static/css/[name].[contenthash:8].css',
-        chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
-      }),
+        new MiniCssExtractPlugin({
+          filename: 'static/css/[name].[contenthash:8].css',
+          chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
+        }),
       isEnvDevelopment && new ReactRefreshWebpackPlugin(),
       isAnalyze && new BundleAnalyzerPlugin(),
       ...(Array.isArray(oslConfig.webpackPlugins)
