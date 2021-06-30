@@ -1,2 +1,0 @@
-(self.webpackChunk=self.webpackChunk||[]).push([[179],{498:(e,t,n)=>{"use strict";var r=n(378),c=n(542),u=n(615),s=n.n(u);function l(e){return r.useEffect((function(){}),[]),r.createElement("div",null,r.createElement("div",null,"cc",JSON.stringify({NODE_ENV:"production",PUBLIC_URL:"/",FAST_REFRESH:"false"})))}l.propTypes={test:s().any};const a=l;c.render(r.createElement(a,null),document.getElementById("root"))}},e=>{"use strict";e.O(0,[262],(()=>{return t=498,e(e.s=t);var t}));e.O()}]);
-//# sourceMappingURL=main.2073aceb.js.map

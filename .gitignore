@@ -103,3 +103,5 @@ dist
 .tern-port
 
 node_modules
+
+test/build

@@ -37,7 +37,7 @@ const raw = Object.keys(envConfigs).reduce(
   },
   {
     NODE_ENV: process.env.NODE_ENV || 'development',
-    PUBLIC_URL: process.env.PUBLIC_URL || '/',
+    PUBLIC_URL: (process.env.PUBLIC_URL || '/').slice(0, -1),
     FAST_REFRESH: process.env.FAST_REFRESH || 'false',
   },
 )
