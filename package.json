@@ -10,7 +10,7 @@
     "start": "export INTERNAL_TEST=__test__  &&   node ./bin/osl.js start",
     "build": " export INTERNAL_TEST=__test__  &&  node ./bin/osl.js build",
     "test": "jest",
-    "prepare": "husky install"
+    "_prepare": "husky install"
   },
   "repository": {
     "type": "git",
