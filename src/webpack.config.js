@@ -38,7 +38,6 @@ module.exports = function (webpackEnv) {
   const isAnalyze = process.env.ANALYZE
   const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000')
 
-  console.log(appPublic, appHtmlTemp, appPublicPathUrl)
   const getStyleLoaders = (cssOptions, preProcessor) => {
     const loaders = [
       isEnvDevelopment && require.resolve('style-loader'),
